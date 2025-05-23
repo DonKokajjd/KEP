@@ -1,59 +1,38 @@
-C<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KEP CHATBOT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Main View</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       max-width: 800px;
       margin: 40px auto;
-      padding: 0 20px;
-      background-color: #f4f4f4;
-      color: #333;
+      background: #f4f4f4;
+      padding: 20px;
     }
-    h1 {
-      color: #0366d6;
-    }
-    a {
-      color: #0366d6;
+    nav a {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background: #0366d6;
+      color: white;
       text-decoration: none;
+      border-radius: 5px;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #666;
+    nav a:hover {
+      background: #024a9b;
     }
   </style>
 </head>
 <body>
-  <h1>My GitHub Project</h1>
-  <p>Faqe per Dreaft Chatbotin e KEP</p>
+  <nav>
+    <a href="index.html">Main View</a>
+    <a href="popup.html">Pop-up View</a>
+    <a href="embedded.html">Embedded View</a>
+  </nav>
 
- 
-
-  <footer>
-    &copy; 2025 
-  </footer>
-  <script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '682c87308e4f1226d2f25226' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production',
-          voice: {
-            url: "https://runtime-api.voiceflow.com"
-          }
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
+  <h1>Welcome to the Main View</h1>
+  <p>This is the main landing page of the project. Use the buttons above to switch views.</p>
 </body>
 </html>
