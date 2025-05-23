@@ -23,6 +23,11 @@
     nav a:hover {
       background: #024a9b;
     }
+    #vf-embed-container {
+      margin-top: 30px;
+      height: 600px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
@@ -33,6 +38,33 @@
   </nav>
 
   <h1>This is the Embedded View</h1>
-  <p>This version is designed to be embedded within an iframe or another web app.</p>
+  <p>This version embeds the chatbot directly into the page below:</p>
+
+  <!-- Chatbot embed target -->
+  <div id="vf-embed-container"></div>
+
+  <!-- Voiceflow Embed Script -->
+  <script type="text/javascript">
+    (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6830732bed9e618fd6918af7' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          },
+          render: {
+            mode: 'embedded',
+            target: document.getElementById('vf-embed-container')
+          }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+      v.type = "text/javascript";
+      s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
 </body>
 </html>
