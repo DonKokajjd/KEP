@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Main View</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    nav a {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background: #0366d6;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    nav a:hover {
+      background: #024a9b;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Main View</a>
+    <a href="popup.html">Pop-up View</a>
+    <a href="embedded.html">Embedded View</a>
+    <a href="internal.html">Internal</a>
+  </nav>
 
+  <h1>KEP Internal Chatbot</h1>
+  <p>Use the buttons above to switch views.</p>
+  <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '68529cd97dbac3b7b99a8fc0' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+</body>
+</html>
