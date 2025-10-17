@@ -11,6 +11,7 @@
       margin: 40px auto;
       background: #f4f4f4;
       padding: 20px;
+      position: relative;
     }
     nav a {
       margin: 0 10px;
@@ -23,6 +24,23 @@
     nav a:hover {
       background: #024a9b;
     }
+    .lang-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .lang-buttons button {
+      background: #0366d6;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      margin-left: 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .lang-buttons button:hover {
+      background: #024a9b;
+    }
   </style>
 </head>
 <body>
@@ -33,8 +51,16 @@
     <a href="internal.html">Internal</a>
   </nav>
 
+  <!-- Language Buttons (Top Right) -->
+  <div class="lang-buttons">
+    <button id="btnEN">EN</button>
+    <button id="btnAL">AL</button>
+    <button id="btnSR">SR</button>
+  </div>
+
   <h1>KEP Internal Chatbot</h1>
-  <p>Use the buttons above to switch views.</p>
+  <p>Use the buttons above to switch views or start the chatbot in different languages.</p>
+
   <script type="text/javascript">
   (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
@@ -47,9 +73,45 @@
             url: "https://runtime-api.voiceflow.com"
           }
         });
-      }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+
+        // --- LANGUAGE BUTTONS ---
+        function startChatWithIntent(intentName) {
+          const chat = window.voiceflow?.chat;
+          if (!chat) return;
+          chat.open();
+          chat.interact({ type: 'launch' }); // reset chat
+          setTimeout(() => {
+            chat.interact({
+              type: 'intent',
+              payload: {
+                intent: { name: intentName, confidence: 1.0 }
+              }
+            });
+          }, 300);
+        }
+
+        // English
+        document.getElementById("btnEN").addEventListener("click", function(e) {
+          e.stopPropagation();
+          startChatWithIntent("Configuration Flow EN");
+        });
+
+        // Albanian
+        document.getElementById("btnAL").addEventListener("click", function(e) {
+          e.stopPropagation();
+          startChatWithIntent("Configuration Flow AL");
+        });
+
+        // Serbian
+        document.getElementById("btnSR").addEventListener("click", function(e) {
+          e.stopPropagation();
+          startChatWithIntent("Configuration Flow SR");
+        });
+      };
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+      v.type = "text/javascript"; 
+      s.parentNode.insertBefore(v, s);
   })(document, 'script');
-</script>
+  </script>
 </body>
 </html>
